@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html lang="ro-RO">
+<head>
+<title>Webmail lucianf.ro</title>
+<link type="image/x-icon" href="http://webmail.lucianf.ro/mail/graphics/favicon.ico" rel="SHORTCUT ICON">
+<LINK REL="stylesheet" type="text/css" href="http://www.lucianf.ro/style.css" />
+</head>
+<body bgcolor="#305080" text="#CCFFFF" link="#CCFFFF" vlink="#CCFFFF" alink="#FFFFFF"
+onload="document.implogin.pass.focus();">
+<script type="text/javascript" language="JavaScript">
+<!--
+
+function setFocus()
+{
+    document.implogin.imapuser.focus();
+}
+
+function submit_login()
+{
+    if (document.implogin.imapuser.value == "") {
+        alert('Te rog introdu numele de Utilizator si Parola.');
+        document.implogin.imapuser.focus();
+        return false;
+    } else if (document.implogin.pass.value == "") {
+        alert('Te rog introdu numele de Utilizator si Parola.');
+        document.implogin.pass.focus();
+        return false;
+    } else {
+        return true;
+    }
+}
+//-->
+</script>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+function enter_key_trap(e)
+{
+    var keyPressed;
+
+    if (document.layers) {
+        keyPressed = String.fromCharCode(e.which);
+    } else if (document.all) {
+        keyPressed = String.fromCharCode(window.event.keyCode);
+    } else if (document.getElementById) {
+        keyPressed = String.fromCharCode(e.keyCode);
+    }
+
+    if ((keyPressed == "\r" || keyPressed == "\n") && (submit_login())) {
+        document.implogin.submit();
+    }
+}
+//-->
+</script>
+<form name="implogin" method="post" action="http://webmail.lucianf.ro/mail/redirect.php">
+  <input value="105" name="actionID" type="hidden">
+  <input value="http://webmail.lucianf.ro/login.php" name="url" type="hidden">
+  <input value="INBOX" name="mailbox" type="hidden">
+  <table border="0" align="center">
+    <tbody>
+      <tr>
+        <td><div align="center"><img src="lfromail.gif" width="197" height="60" /><br />
+            <br />
+          </div></td>
+      </tr>
+      <tr>
+        <td> <table cellspacing="4">
+            <tbody>
+              <tr bgcolor="#5070A0">
+                <td width="120"><span class="p">Adresa email:</span></td>
+                <td width="220" style="vertical-align: middle;"> <input name="imapuser" type="text" tabindex="1" value="lucianf" size="20">
+                  <span class="info">@lucianf.ro</span></td>
+              </tr>
+              <tr bgcolor="#5070A0">
+                <td><span class="p">Parola:</span></td>
+                <td width="220"> <input name="pass" type="password" tabindex="2" size="20"></td>
+              </tr>
+              <tr bgcolor="#5070A0">
+                <td><span class="p">Limba:</span></td>
+                <td width="220"> <select onchange="selectLang()" name="new_lang">
+                    <option value="en_GB">English (GB)</option>
+                    <option value="es_ES">Espa&#241;ol</option>
+                    <option selected="selected" value="ro_RO">Romana</option>
+                  </select></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td width="220" align="left" class="p"> <br />
+                  <input onclick="return submit_login();" value="Conectare" tabindex="4" name="button" class="button" type="submit"></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<script type="text/javascript" language="JavaScript">
+<!--
+
+function updatePort()
+{
+}
+
+function selectLang()
+{
+    // We need to reload the login page here, but only if the user hasn't
+    // already entered a username and password.
+    if (document.implogin.imapuser.value == '' &&
+        document.implogin.pass.value == '') {
+        var lang_page = 'login.php?new_lang=' + document.implogin.new_lang[document.implogin.new_lang.selectedIndex].value;
+        lang_page += '&url=http%3A%2F%2Fwebmail.lucianf.ro%2Flogin.php';
+        self.location = lang_page;
+    }
+}
+
+//-->
+</script>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+// Setup the enter keytrap code
+if (window.document.captureEvents != null) {
+    window.document.captureEvents(Event.KEYPRESS);
+    window.document.onkeypress = enter_key_trap;
+}
+//-->
+</script>
+<!-- This file contains any "Message Of The Day" Type information -->
+<!-- It will be included below the log-in form on the login page. -->
+</body>
+</html>
